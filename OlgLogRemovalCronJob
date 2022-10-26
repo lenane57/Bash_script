@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#Cron job script for removing old logs from the logs directory
+
+find /../var/log/ -name "messages-*" -not -name "*.gz" -mtime +12 -exec gzip {} \;
+find /../var/log/ * -name "*.gz" -type f -mtime +30 -delete
+find /../var/log/mongodb * -name "*.gz" -type f -mtime +30 -delete
+find /../var/log/mongodb-mms-automation * -name "*.gz" -type f -mtime +30 -delete
